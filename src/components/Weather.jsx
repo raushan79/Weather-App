@@ -32,20 +32,28 @@ function Weather() {
 
   return (
     <div>
-      <input
+      <input className="weather-input-city"
         type="text"
         placeholder="Enter City Name"
         value={inputValue}
         onInput={(e) => setInputValue(e.target.value)}
       />
-      <hr />
+      
       {!inputValue.length ? null : data ? (
         <div>
-          <p>City : {city}</p>
-          <h1>{data.temp}</h1>
+          <p className="weather-p-city">Weather Details of City : {city}</p>
+          
+          <div className="weather-information-container">
+          <p >Current Temperature : {data.temp} °C</p>
+          <p >Temperature Range : {data.temp_min} °C  to  {data.temp_max} °C</p>
+          <p >Humidity  : {data.humidity}</p>
+          <p >Sea Level  : {data.sea_level}</p>
+          <p >Ground Level  : {data.grnd_level}</p>
+          
+          </div>
         </div>
       ) : (
-        <h1>No data</h1>
+        <p className="weather-valid-city-name">Enter Valid City Name</p>
       )}
     </div>
   );
